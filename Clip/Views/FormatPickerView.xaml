@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.FormatPickerView"
+    x:Name="Root"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource ClipCardStyle}">
+        <StackPanel Spacing="16">
+            <StackPanel Spacing="3">
+                <TextBlock Text="{Binding Text.OutputTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                <TextBlock Text="{Binding Text.OutputDescription}" Style="{StaticResource CaptionTextStyle}" />
+            </StackPanel>
+
+            <StackPanel Spacing="7">
+                <TextBlock Text="{Binding Text.FormatLabel}" Style="{StaticResource EyebrowTextStyle}" />
+                <ListView
+                    ItemsSource="{Binding Formats}"
+                    SelectedItem="{Binding SelectedFormat, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    ItemContainerStyle="{StaticResource ChoiceListItemStyle}"
+                    ScrollViewer.HorizontalScrollMode="Disabled"
+                    ScrollViewer.VerticalScrollMode="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Label}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Spacing="7">
+                <TextBlock Text="{Binding Text.ResolutionLabel}" Style="{StaticResource EyebrowTextStyle}" />
+                <ListView
+                    ItemsSource="{Binding Resolutions}"
+                    SelectedItem="{Binding SelectedResolution, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    IsEnabled="{Binding IsVideoFormat}"
+                    ItemContainerStyle="{StaticResource ChoiceListItemStyle}"
+                    ScrollViewer.HorizontalScrollMode="Disabled"
+                    ScrollViewer.VerticalScrollMode="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </StackPanel>
+
+            <Grid ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="112" />
+                </Grid.ColumnDefinitions>
+                <ToggleSwitch
+                    Header="{Binding Text.TargetSizeHeader}"
+                    OffContent="{Binding Text.OriginalQuality}"
+                    OnContent="{Binding Text.CustomLimit}"
+                    IsOn="{Binding IsCustomTargetSize, Mode=TwoWay}" />
+                <NumberBox
+                    Grid.Column="1"
+                    Header="{Binding Text.MbHeader}"
+                    Minimum="1"
+                    Maximum="4096"
+                    SmallChange="5"
+                    LargeChange="50"
+                    IsEnabled="{Binding IsCustomTargetSize}"
+                    Value="{Binding CustomTargetSizeMb, Mode=TwoWay}" />
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</UserControl>

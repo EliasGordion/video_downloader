@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.URLInputView"
+    x:Name="Root"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    AllowDrop="True"
+    DragOver="OnDragOver"
+    Drop="OnDrop">
+    <Border Style="{StaticResource ClipCardStyle}">
+        <StackPanel Spacing="14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Text.PasteLinkTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock
+                        Text="{Binding Text.PasteLinkDescription}"
+                        Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+                <Border Grid.Column="1" Style="{StaticResource BadgeBorderStyle}" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Ellipse Width="7" Height="7" Fill="{ThemeResource ClipLavenderBrush}" />
+                        <TextBlock Text="{Binding DetectedPlatformLabel}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    PlaceholderText="{Binding Text.PasteVideoUrlPlaceholder}"
+                    Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    MinHeight="44" />
+                <Button
+                    Grid.Column="1"
+                    Style="{StaticResource QuietPillButtonStyle}"
+                    Command="{Binding PasteCommand}"
+                    ToolTipService.ToolTip="{Binding Text.PasteTooltip}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon Glyph="&#xE77F;" FontSize="14" />
+                        <TextBlock Text="{Binding Text.PasteAction}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Grid.Column="2"
+                    Style="{StaticResource IconButtonStyle}"
+                    Command="{Binding ClearCommand}"
+                    ToolTipService.ToolTip="{Binding Text.ClearUrlTooltip}">
+                    <FontIcon Glyph="&#xE711;" FontSize="14" />
+                </Button>
+                <Button
+                    Grid.Column="3"
+                    Style="{StaticResource AccentPillButtonStyle}"
+                    Command="{Binding AnalyzeCommand}"
+                    MinWidth="116"
+                    ToolTipService.ToolTip="{Binding Text.AnalyzeTooltip}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon Glyph="&#xE8EF;" FontSize="14" />
+                        <TextBlock Text="{Binding Text.AnalyzeAction}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

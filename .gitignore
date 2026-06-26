@@ -1,0 +1,49 @@
+# Build output
+bin/
+obj/
+publish/
+artifacts/
+TestResults/
+
+# IDE and local state
+.vs/
+.vscode/
+.idea/
+.dotnet/
+.nuget/
+.appdata/
+.agents/
+*.user
+*.suo
+*.userosscache
+
+# Local/offline packages
+local-nuget/
+packages/
+*.nupkg
+
+# Bundled runtime tools are downloaded with scripts/Download-Binaries.ps1
+/*.exe
+/*.dll
+/*.pdb
+/*.json
+/*.xbf
+/*.winmd
+/*.pri
+*.mui
+/WindowsAppRuntime.png
+/Resources/
+/Views/
+/runtimes/
+/Microsoft.UI.Xaml/
+Clip/Resources/bin/*.exe
+Clip/Resources/bin/*.old
+
+# Temporary downloads and archives
+.github-upload/
+.ffmpeg-extract/
+ffmpeg-release-essentials.zip
+*.part
+*.tmp
+*.log
+*.lnk

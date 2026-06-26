@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.ClipRangeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource ClipCardStyle}">
+        <StackPanel Spacing="14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Text.ClipRangeTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Text="{Binding Text.ClipRangeDescription}" Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+                <ToggleSwitch
+                    Grid.Column="1"
+                    Margin="12,0"
+                    VerticalAlignment="Top"
+                    Header="{Binding Text.UseRangeHeader}"
+                    OffContent="{Binding Text.FullVideo}"
+                    OnContent="{Binding Text.ClipEnabled}"
+                    IsEnabled="{Binding HasMetadata}"
+                    IsOn="{Binding IsClipEnabled, Mode=TwoWay}" />
+                <Border Grid.Column="2" Style="{StaticResource BadgeBorderStyle}" VerticalAlignment="Top">
+                    <TextBlock Text="{Binding ClipRange.SelectedDurationText}" Style="{StaticResource NumericalTextStyle}" />
+                </Border>
+            </Grid>
+            <StackPanel Spacing="5">
+                <TextBlock Text="{Binding Text.StartLabel}" Style="{StaticResource EyebrowTextStyle}" />
+                <Slider
+                    Minimum="0"
+                    Maximum="{Binding ClipRange.DurationSeconds}"
+                    IsEnabled="{Binding IsClipEnabled}"
+                    Value="{Binding ClipRange.StartSeconds, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Spacing="5">
+                <TextBlock Text="{Binding Text.EndLabel}" Style="{StaticResource EyebrowTextStyle}" />
+                <Slider
+                    Minimum="0"
+                    Maximum="{Binding ClipRange.DurationSeconds}"
+                    IsEnabled="{Binding IsClipEnabled}"
+                    Value="{Binding ClipRange.EndSeconds, Mode=TwoWay}" />
+            </StackPanel>
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    Header="{Binding Text.StartTimeLabel}"
+                    IsEnabled="{Binding IsClipEnabled}"
+                    Text="{Binding ClipRange.StartText, Mode=TwoWay}" />
+                <TextBox
+                    Grid.Column="1"
+                    Header="{Binding Text.EndTimeLabel}"
+                    IsEnabled="{Binding IsClipEnabled}"
+                    Text="{Binding ClipRange.EndText, Mode=TwoWay}" />
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="16" Padding="0,10,0,0">
+        <Border Style="{StaticResource ClipCardStyle}">
+            <Grid ColumnSpacing="18">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="3" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Text.LanguageSectionTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Text="{Binding Text.LanguageSectionDescription}" Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+                <ListView
+                    Grid.Column="1"
+                    ItemsSource="{Binding Languages}"
+                    SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    ItemContainerStyle="{StaticResource LanguageChoiceListItemStyle}"
+                    ScrollViewer.HorizontalScrollMode="Disabled"
+                    ScrollViewer.VerticalScrollMode="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsStackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="9" VerticalAlignment="Center">
+                                <Border
+                                    Width="32"
+                                    Height="28"
+                                    CornerRadius="9"
+                                    Background="{ThemeResource ClipAccentSoftBrush}">
+                                    <TextBlock
+                                        Text="{Binding Badge}"
+                                        FontSize="12"
+                                        FontWeight="SemiBold"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock
+                                    Text="{Binding DisplayName}"
+                                    FontWeight="SemiBold"
+                                    VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
+
+        <Border Style="{StaticResource ClipCardStyle}">
+            <StackPanel Spacing="16">
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Text.DownloadDefaultsTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Text="{Binding Text.DownloadDefaultsDescription}" Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+                <Grid ColumnSpacing="12" RowSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ComboBox MinHeight="44" Header="{Binding Text.DefaultFormatHeader}" ItemsSource="{Binding Formats}" SelectedItem="{Binding DefaultFormat, Mode=TwoWay}" />
+                    <ComboBox MinHeight="44" Grid.Column="1" Header="{Binding Text.DefaultResolutionHeader}" ItemsSource="{Binding Resolutions}" SelectedItem="{Binding DefaultResolution, Mode=TwoWay}" />
+                    <ComboBox MinHeight="44" Grid.Row="1" Header="{Binding Text.ThemeHeader}" ItemsSource="{Binding Themes}" SelectedItem="{Binding Theme, Mode=TwoWay}" />
+                    <ComboBox MinHeight="44" Grid.Row="1" Grid.Column="1" Header="{Binding Text.ConcurrentDownloadsHeader}" ItemsSource="{Binding ConcurrentOptions}" SelectedItem="{Binding MaxConcurrentDownloads, Mode=TwoWay}" />
+                    <ComboBox MinHeight="44" Grid.Row="2" Header="{Binding Text.CookiesBrowserHeader}" ItemsSource="{Binding Browsers}" SelectedItem="{Binding PreferredBrowser, Mode=TwoWay}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource ClipCardStyle}">
+            <StackPanel Spacing="16">
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Text.AppBehaviorTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Text="{Binding Text.AppBehaviorDescription}" Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Text.ClipboardMonitoringTitle}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Text.ClipboardMonitoringDescription}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="1" IsOn="{Binding ClipboardMonitoringEnabled, Mode=TwoWay}" />
+                </Grid>
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Text.AutoAnalyzeTitle}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Text.AutoAnalyzeDescription}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="1" IsOn="{Binding AutoAnalyzeClipboard, Mode=TwoWay}" />
+                </Grid>
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Text.BrowserCookiesTitle}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Text.BrowserCookiesDescription}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="1" IsOn="{Binding UseBrowserCookies, Mode=TwoWay}" />
+                </Grid>
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Text.NotificationsTitle}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Text.NotificationsDescription}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="1" IsOn="{Binding ShowToastNotifications, Mode=TwoWay}" />
+                </Grid>
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Text.KeepRunningTitle}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Text.KeepRunningDescription}" Style="{StaticResource CaptionTextStyle}" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="1" IsOn="{Binding KeepInTrayOnClose, Mode=TwoWay}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

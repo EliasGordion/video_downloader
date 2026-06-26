@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.DownloadSectionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource ClipCardStyle}">
+        <StackPanel Spacing="14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{Binding Text.ReadyToDownloadTitle}" Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Text="{Binding Text.ReadyToDownloadDescription}" Style="{StaticResource CaptionTextStyle}" />
+                </StackPanel>
+                <Border Grid.Column="1" Style="{StaticResource BadgeBorderStyle}" VerticalAlignment="Top">
+                    <TextBlock Text="{Binding QueueSummary}" Style="{StaticResource CaptionTextStyle}" />
+                </Border>
+            </Grid>
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Style="{StaticResource AccentPillButtonStyle}"
+                    MinHeight="46"
+                    Command="{Binding EnqueueCurrentCommand}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon Glyph="&#xE896;" FontSize="14" />
+                        <TextBlock Text="{Binding Text.AddToDownloads}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Grid.Column="1"
+                    Style="{StaticResource IconButtonStyle}"
+                    Command="{Binding ClearCompletedCommand}"
+                    ToolTipService.ToolTip="{Binding Text.ClearCompletedTooltip}">
+                    <FontIcon Glyph="&#xE74D;" FontSize="14" />
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

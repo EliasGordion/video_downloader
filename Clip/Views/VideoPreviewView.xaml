@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Clip.Views.VideoPreviewView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource ClipCardStyle}">
+        <Grid ColumnSpacing="18">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border
+                CornerRadius="14"
+                Background="{ThemeResource ClipMutedSurfaceBrush}"
+                BorderBrush="{ThemeResource ClipImageOutlineBrush}"
+                BorderThickness="1"
+                Height="132">
+                <Grid>
+                    <FontIcon
+                        Glyph="&#xE714;"
+                        FontSize="28"
+                        Foreground="{ThemeResource ClipSubtleTextBrush}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                    <Image Source="{Binding PreviewThumbnailUrl}" Stretch="UniformToFill" />
+                </Grid>
+            </Border>
+            <StackPanel Grid.Column="1" Spacing="9" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Text.PreviewEyebrow}" Style="{StaticResource EyebrowTextStyle}" />
+                <TextBlock
+                    Text="{Binding PreviewTitle}"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    TextWrapping="Wrap"
+                    MaxLines="2"
+                    TextTrimming="CharacterEllipsis" />
+                <TextBlock Text="{Binding PreviewSubtitle}" Style="{StaticResource CaptionTextStyle}" MaxLines="2" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Border Style="{StaticResource BadgeBorderStyle}" Background="{ThemeResource ClipAccentSoftBrush}">
+                        <TextBlock Text="{Binding PreviewPlatformLabel}" FontSize="12" />
+                    </Border>
+                    <Border Style="{StaticResource BadgeBorderStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <FontIcon Glyph="&#xE823;" FontSize="11" />
+                            <TextBlock Text="{Binding PreviewDurationText}" Style="{StaticResource NumericalTextStyle}" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
