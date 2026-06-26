@@ -1,0 +1,56 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Настройки Clip</title>
+  <desc id="desc">Демонстрационный скриншот настроек приложения Clip: язык, качество, формат, уведомления и работа в трее.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f8fc"/>
+      <stop offset="1" stop-color="#edf2f8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1d2433" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="62" y="44" width="1156" height="632" rx="22" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="96" y="94" font-family="Segoe UI, Arial" font-size="28" font-weight="800" fill="#202636">Настройки</text>
+  <text x="96" y="122" font-family="Segoe UI, Arial" font-size="15" fill="#687282">Основные параметры приложения хранятся локально и применяются при новых загрузках.</text>
+
+  <rect x="96" y="158" width="1088" height="96" rx="16" fill="#fbfcfe" stroke="#e3e8f0"/>
+  <text x="126" y="194" font-family="Segoe UI, Arial" font-size="18" font-weight="700" fill="#202636">Язык</text>
+  <text x="126" y="220" font-family="Segoe UI, Arial" font-size="14" fill="#687282">Можно выбрать русский или английский интерфейс.</text>
+  <rect x="922" y="184" width="108" height="42" rx="13" fill="#7567f1"/>
+  <text x="949" y="211" font-family="Segoe UI, Arial" font-size="14" font-weight="700" fill="#ffffff">Русский</text>
+  <rect x="1042" y="184" width="108" height="42" rx="13" fill="#f2f4f8"/>
+  <text x="1074" y="211" font-family="Segoe UI, Arial" font-size="14" fill="#394153">English</text>
+
+  <rect x="96" y="278" width="1088" height="178" rx="16" fill="#fbfcfe" stroke="#e3e8f0"/>
+  <text x="126" y="314" font-family="Segoe UI, Arial" font-size="18" font-weight="700" fill="#202636">Настройки загрузки</text>
+  <text x="126" y="340" font-family="Segoe UI, Arial" font-size="14" fill="#687282">Эти значения выбираются по умолчанию для новых ссылок.</text>
+
+  <rect x="126" y="368" width="240" height="54" rx="12" fill="#ffffff" stroke="#dbe2ec"/>
+  <text x="144" y="389" font-family="Segoe UI, Arial" font-size="12" fill="#7a8190">Формат</text>
+  <text x="144" y="412" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">MP4 video</text>
+  <rect x="390" y="368" width="240" height="54" rx="12" fill="#ffffff" stroke="#dbe2ec"/>
+  <text x="408" y="389" font-family="Segoe UI, Arial" font-size="12" fill="#7a8190">Качество</text>
+  <text x="408" y="412" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">720p</text>
+  <rect x="654" y="368" width="240" height="54" rx="12" fill="#ffffff" stroke="#dbe2ec"/>
+  <text x="672" y="389" font-family="Segoe UI, Arial" font-size="12" fill="#7a8190">Тема</text>
+  <text x="672" y="412" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">Системная</text>
+  <rect x="918" y="368" width="218" height="54" rx="12" fill="#ffffff" stroke="#dbe2ec"/>
+  <text x="936" y="389" font-family="Segoe UI, Arial" font-size="12" fill="#7a8190">Потоки</text>
+  <text x="936" y="412" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">2 загрузки</text>
+
+  <rect x="96" y="480" width="1088" height="150" rx="16" fill="#fbfcfe" stroke="#e3e8f0"/>
+  <text x="126" y="516" font-family="Segoe UI, Arial" font-size="18" font-weight="700" fill="#202636">Поведение приложения</text>
+  <text x="126" y="542" font-family="Segoe UI, Arial" font-size="14" fill="#687282">Буфер обмена, уведомления и работа в фоне.</text>
+
+  <text x="126" y="584" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">Отслеживать буфер обмена</text>
+  <rect x="434" y="566" width="54" height="30" rx="15" fill="#7567f1"/>
+  <circle cx="472" cy="581" r="11" fill="#ffffff"/>
+  <text x="536" y="584" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">Показывать уведомления</text>
+  <rect x="782" y="566" width="54" height="30" rx="15" fill="#7567f1"/>
+  <circle cx="820" cy="581" r="11" fill="#ffffff"/>
+  <text x="126" y="620" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#202636">Оставлять в трее при закрытии</text>
+  <rect x="434" y="602" width="54" height="30" rx="15" fill="#d7ddea"/>
+  <circle cx="450" cy="617" r="11" fill="#ffffff"/>
+</svg>
