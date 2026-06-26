@@ -1,68 +1,74 @@
 # Clip
 
-Clip is a native Windows downloader app built with C# 12, .NET 8, WinUI 3, and Windows App SDK.
+Clip - это простое Windows-приложение для скачивания видео и аудио по ссылке. Оно использует `yt-dlp` для загрузки и `ffmpeg` для обработки файлов.
 
-## Download
+Проект сделан на C# 12, .NET 8, WinUI 3 и Windows App SDK.
 
-Use the ZIP file from GitHub Releases, not `Code > Download ZIP`.
+## Что умеет приложение
 
-After extracting the release ZIP, run:
+- принимает ссылку на видео;
+- показывает доступные варианты качества;
+- скачивает видео или аудио;
+- умеет работать с фрагментами ролика;
+- хранит историю загрузок;
+- работает как переносимая программа без отдельной установки Python, yt-dlp или ffmpeg.
 
-```text
-Start Clip.cmd
-```
+## Как скачать и запустить
 
-or:
+Для обычного пользователя нужен ZIP из раздела **Releases**.
 
-```text
-Clip.exe
-```
+Не используйте `Code > Download ZIP` для запуска программы. Этот архив содержит исходный код, а не готовое приложение.
 
-The source code ZIP from GitHub is for developers. It does not include a ready-to-run app.
+Правильный вариант:
 
-It uses local copies of `yt-dlp.exe`, `ffmpeg.exe`, and `ffprobe.exe` from:
+1. Открыть раздел **Releases** на GitHub.
+2. Скачать файл `Clip-win-x64.zip`.
+3. Распаковать архив в удобную папку.
+4. Запустить `Start Clip.cmd` или `Clip.exe`.
 
-```text
-Clip/Resources/bin/
-```
+В релизном архиве `Clip.exe` лежит в верхнем уровне папки, поэтому его не нужно искать внутри `bin`, `Release` или других служебных каталогов.
 
-These executable files are not committed to the repository. Download them before running or publishing:
+## Для разработчиков
+
+Перед запуском из исходников нужно скачать внешние инструменты:
 
 ```powershell
 .\scripts\Download-Binaries.ps1
 ```
 
-The app does not assume Python, yt-dlp, or ffmpeg are installed globally. Runtime paths are resolved from `AppContext.BaseDirectory`, so portable publish output keeps the same layout.
-
-## Development
+После этого можно собрать и запустить проект:
 
 ```powershell
 dotnet restore
-.\scripts\Download-Binaries.ps1
 dotnet build -c Debug
 dotnet run --project Clip
 ```
 
-## Portable release
+## Сборка релизного ZIP
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\Build-PortableRelease.ps1
 ```
 
-This creates:
+Скрипт создаёт архив:
 
 ```text
 release/Clip-win-x64.zip
 ```
 
-Upload that ZIP to GitHub Releases. Inside the archive, `Start Clip.cmd` and `Clip.exe` are at the top level, so users do not need to search through build folders.
+Этот ZIP можно прикрепить к GitHub Release. Внутри архива есть `Start Clip.cmd`, `Clip.exe` и все нужные файлы для запуска.
 
-To refresh the bundled tools without building a release:
+## Что не хранится в репозитории
 
-```powershell
-.\scripts\Download-Binaries.ps1
-```
+В репозиторий не добавляются:
 
-## Notes
+- файлы сборки `bin`, `obj`, `release`;
+- `ffmpeg.exe`, `ffprobe.exe`, `yt-dlp.exe`;
+- локальные настройки IDE;
+- временные файлы и архивы.
 
-The tray icon, clipboard monitoring, JSON settings, download history, and process execution are implemented for unpacked development builds. MSIX can be added later, but the portable build is the priority because it keeps bundled process execution simple.
+Эти файлы либо создаются при сборке, либо скачиваются скриптом.
+
+## Примечания
+
+Основной формат распространения - portable ZIP. MSIX-установщик можно добавить позже, но сейчас приоритет - простой запуск после распаковки архива.
