@@ -3,6 +3,7 @@ bin/
 obj/
 publish/
 artifacts/
+release/
 TestResults/
 
 # IDE and local state
@@ -43,6 +44,7 @@ Clip/Resources/bin/*.old
 .github-upload/
 .ffmpeg-extract/
 ffmpeg-release-essentials.zip
+*.zip
 *.part
 *.tmp
 *.log

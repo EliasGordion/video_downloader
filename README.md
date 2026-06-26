@@ -2,6 +2,24 @@
 
 Clip is a native Windows downloader app built with C# 12, .NET 8, WinUI 3, and Windows App SDK.
 
+## Download
+
+Use the ZIP file from GitHub Releases, not `Code > Download ZIP`.
+
+After extracting the release ZIP, run:
+
+```text
+Start Clip.cmd
+```
+
+or:
+
+```text
+Clip.exe
+```
+
+The source code ZIP from GitHub is for developers. It does not include a ready-to-run app.
+
 It uses local copies of `yt-dlp.exe`, `ffmpeg.exe`, and `ffprobe.exe` from:
 
 ```text
@@ -28,23 +46,18 @@ dotnet run --project Clip
 ## Portable release
 
 ```powershell
-dotnet publish Clip `
-  -c Release `
-  -r win-x64 `
-  --self-contained true `
-  /p:PublishSingleFile=false
+powershell -ExecutionPolicy Bypass -File .\scripts\Build-PortableRelease.ps1
 ```
 
-The publish folder must contain:
+This creates:
 
 ```text
-Clip.exe
-Resources/bin/yt-dlp.exe
-Resources/bin/ffmpeg.exe
-Resources/bin/ffprobe.exe
+release/Clip-win-x64.zip
 ```
 
-To refresh the bundled tools:
+Upload that ZIP to GitHub Releases. Inside the archive, `Start Clip.cmd` and `Clip.exe` are at the top level, so users do not need to search through build folders.
+
+To refresh the bundled tools without building a release:
 
 ```powershell
 .\scripts\Download-Binaries.ps1
